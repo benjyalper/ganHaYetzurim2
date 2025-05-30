@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>גן היצורים</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, sans-serif;
+            }
+
+            header {
+                background: #f2f2f2;
+                padding: 20px;
+                text-align: center;
+                font-size: 24px;
+            }
+
+            .container {
+                display: flex;
+                height: calc(100vh - 68px);
+            }
+
+            nav {
+                width: 200px;
+                background: #e6e6e6;
+                padding: 20px;
+            }
+
+            nav a {
+                display: block;
+                margin-bottom: 10px;
+                color: #333;
+                text-decoration: none;
+                font-size: 18px;
+            }
+
+            nav a:hover {
+                text-decoration: underline;
+            }
+
+            main {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid #ccc;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>גן היצורים</header>
+        <div class="container">
+            <nav>
+                <a href="#students">תלמידים</a>
+                <a href="#schedule">סדר יום</a>
+                <a href="#recipe">מתכון החלות הסודי</a>
+            </nav>
+            <main>
+                <section id="students">
+                    <h2>תלמידים</h2>
+                    <table>
+                        <tr>
+                            <th>שם</th>
+                            <th>גיל</th>
+                            <th>פעילות מועדפת</th>
+                        </tr>
+                        <tr>
+                            <td>נועה לוי</td>
+                            <td>5</td>
+                            <td>יצירה עם צבעים</td>
+                        </tr>
+                        <tr>
+                            <td>איתן כהן</td>
+                            <td>6</td>
+                            <td>משחק בלגו</td>
+                        </tr>
+                        <tr>
+                            <td>דוד שוורץ</td>
+                            <td>4</td>
+                            <td>שעת סיפור</td>
+                        </tr>
+                        <tr>
+                            <td>מיה ברק</td>
+                            <td>5</td>
+                            <td>ריקוד</td>
+                        </tr>
+                        <tr>
+                            <td>רועי אוזן</td>
+                            <td>6</td>
+                            <td>משחקי חצר</td>
+                        </tr>
+                        <tr>
+                            <td>לילי פרידמן</td>
+                            <td>4</td>
+                            <td>פאזלים</td>
+                        </tr>
+                        <tr>
+                            <td>אורי גלמן</td>
+                            <td>5</td>
+                            <td>התנסות במדע</td>
+                        </tr>
+                        <tr>
+                            <td>שירה שמואל</td>
+                            <td>6</td>
+                            <td>שירה ומשחקי תנועה</td>
+                        </tr>
+                        <tr>
+                            <td>יואב לב</td>
+                            <td>4</td>
+                            <td>ציור בחול</td>
+                        </tr>
+                        <tr>
+                            <td>תמר הראל</td>
+                            <td>5</td>
+                            <td>בישול בקבוצות</td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="schedule">
+                    <h2>סדר יום</h2>
+                    <table>
+                        <tr>
+                            <th>יום</th>
+                            <th>פעילות - בוקר</th>
+                            <th>פעילות - אחה"צ</th>
+                        </tr>
+                        <tr>
+                            <td>ראשון</td>
+                            <td>משחק חופשי</td>
+                            <td>ארוחת ביניים ולזמן שקט</td>
+                        </tr>
+                        <tr>
+                            <td>שני</td>
+                            <td>שיעור מוסיקה</td>
+                            <td>סיפור וציור</td>
+                        </tr>
+                        <tr>
+                            <td>שלישי</td>
+                            <td>התעמלות ויוגה</td>
+                            <td>משחק קבוצתי</td>
+                        </tr>
+                        <tr>
+                            <td>רביעי</td>
+                            <td>ניסויים במדע</td>
+                            <td>יצירת יצירות מיחזור</td>
+                        </tr>
+                        <tr>
+                            <td>חמישי</td>
+                            <td>סדנת בישול</td>
+                            <td>משחק בחצר</td>
+                        </tr>
+                    </table>
+                </section>
+                <section id="recipe">
+                    <h2>מתכון החלות הסודי</h2>
+                    <h3>מרכיבים (3 חלות):</h3>
+                    <ul>
+                        <li>1 ק״ג קמח מנופה</li>
+                        <li>רבע כוס (50 גרם) סוכר</li>
+                        <li>רבע כוס (60 מ"ל) שמן</li>
+                        <li>1 כף שמרים יבשים</li>
+                        <li>1 כף מלח</li>
+                        <li>2 וחצי כוסות (600 מ"ל) מים</li>
+                    </ul>
+                    <h3>אופן ההכנה:</h3>
+                    <ol>
+                        <li>מערבבים את כל החומרים מלבד המים כדקה במיקסר עם וו לישה.</li>
+                        <li>יוצקים פנימה את המים ולשים כ-6-7 דקות עד לקבלת בצק חלק.</li>
+                        <li>מתפיחים 45 דקות עם כיסוי, עד שהבצק מכפיל את נפחו.</li>
+                        <li>מחלקים ל-3 חלקים, חוצים כל חלק לשניים (סה"כ 6 רצועות), וקולעים צמה מ-4 רצועות.</li>
+                        <li>מתפיחים חצי שעה, מברישים בביצה וסוכר, מפזרים שומשום ואופים ב-220 מעלות 25 דקות.</li>
+                    </ol>
+                </section>
+            </main>
+        </div>
+    </body>
+
+</html>

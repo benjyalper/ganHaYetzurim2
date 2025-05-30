@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>גן היצורים</title>
+        <style>
+            :root {
+                --primary-color: #FFB300;
+                --secondary-color: #FF7043;
+                --accent-color: #66BB6A;
+                --text-color: #4E342E;
+                --bg-light: #FFF8E1;
+                --button-hover: #FF8A65;
+            }
+
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                background: var(--bg-light);
+                color: var(--text-color);
+            }
+
+            header {
+                background: var(--primary-color);
+                padding: 20px;
+                text-align: center;
+                font-size: 2.5rem;
+                color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .container {
+                display: flex;
+                height: calc(100vh - 80px);
+            }
+
+            nav {
+                width: 220px;
+                background: var(--secondary-color);
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            nav a {
+                background: white;
+                color: var(--secondary-color);
+                text-decoration: none;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                padding: 10px;
+                border-radius: 12px;
+                text-align: center;
+                transition: background 0.3s;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            nav a:hover {
+                background: var(--button-hover);
+                color: white;
+            }
+
+            main {
+                flex: 1;
+                padding: 20px;
+                overflow-y: auto;
+            }
+
+            section {
+                background: white;
+                border-radius: 16px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                margin-top: 0;
+                color: var(--accent-color);
+                font-size: 2rem;
+                border-bottom: 2px solid var(--accent-color);
+                padding-bottom: 8px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid #DDD;
+            }
+
+            th,
+            td {
+                padding: 10px;
+                text-align: center;
+            }
+
+            th {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            button {
+                cursor: pointer;
+                font-size: 1rem;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 8px;
+                background: var(--secondary-color);
+                color: white;
+                transition: background 0.3s;
+            }
+
+            button:hover {
+                background: var(--button-hover);
+            }
+
+            [contenteditable] {
+                background: #FFFBEA;
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                    height: auto;
+                }
+
+                nav {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    padding: 10px;
+                }
+
+                nav a {
+                    flex: 1 1 calc(50% - 10px);
+                    margin: 5px;
+                    font-size: 1rem;
+                }
+
+                main {
+                    padding: 15px;
+                }
+
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
+
+                th,
+                td {
+                    white-space: nowrap;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>גן היצורים</header>
+        <div class="container">
+            <nav>
+                <a href="#students">👦 תלמידים</a>
+                <a href="#schedule">📅 סדר יום</a>
+                <a href="#recipe">🍞 מתכון חלות</a>
+            </nav>
+            <main>
+                <section id="students">
+                    <h2>תלמידים</h2>
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>שם</th>
+                                <th>גיל</th>
+                                <th>פעילות</th>
+                                <th>הסר</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <button id="add-student-btn">+ הוסף תלמיד</button>
+                </section>
+                <section id="schedule">
+                    <h2>סדר יום</h2>
+                    <table id="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>יום</th>
+                                <th>בוקר</th>
+                                <th>אחה"צ</th>
+                                <th>הסר</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <button id="add-schedule-btn">+ הוסף יום</button>
+                </section>
+                <section id="recipe">
+                    <h2>מתכון החלות הסודי</h2>
+                    <!-- אפשר להשאיר סטטי -->
+                </section>
+            </main>
+        </div>
+        <script>
+            const apiBase = 'http://localhost:3000/api';
+            // Students
+            async function loadStudents() {
+                const res = await fetch(`${apiBase}/students`);
+                const data = await res.json();
+                const tbody = document.querySelector('#students-table tbody');
+                tbody.innerHTML = '';
+                data.forEach(s => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+          <td contenteditable data-field="name" data-id="${s.id}">${s.name}</td>
+          <td contenteditable data-field="age" data-id="${s.id}">${s.age}</td>
+          <td contenteditable data-field="activity" data-id="${s.id}">${s.activity}</td>
+          <td><button onclick="deleteItem('students',${s.id})">🗑️</button></td>
+        `;
+                    tbody.appendChild(tr);
+                });
+            }
+            // Schedule
+            async function loadSchedule() {
+                const res = await fetch(`${apiBase}/schedule`);
+                const data = await res.json();
+                const tbody = document.querySelector('#schedule-table tbody');
+                tbody.innerHTML = '';
+                data.forEach(s => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+          <td contenteditable data-field="day" data-id="${s.id}">${s.day}</td>
+          <td contenteditable data-field="morning_activity" data-id="${s.id}">${s.morning_activity}</td>
+          <td contenteditable data-field="afternoon_activity" data-id="${s.id}">${s.afternoon_activity}</td>
+          <td><button onclick="deleteItem('schedule',${s.id})">🗑️</button></td>
+        `;
+                    tbody.appendChild(tr);
+                });
+            }
+            // Handle edits
+            document.addEventListener('focusout', async e => {
+                if (e.target.matches('[contenteditable]')) {
+                    const id = e.target.dataset.id;
+                    const field = e.target.dataset.field;
+                    const value = e.target.innerText.trim();
+                    const endpoint = e.target.closest('table').id === 'students-table' ? 'students' : 'schedule';
+                    await fetch(`${apiBase}/${endpoint}/${id}`, {
+                        method: 'PUT', headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ [field]: value })
+                    });
+                }
+            });
+            // Delete
+            async function deleteItem(table, id) {
+                await fetch(`${apiBase}/${table}/${id}`, { method: 'DELETE' });
+                table === 'students' ? loadStudents() : loadSchedule();
+            }
+            // Add
+            document.getElementById('add-student-btn').addEventListener('click', async () => {
+                const name = prompt('שם:');
+                const age = prompt('גיל:');
+                const activity = prompt('פעילות:');
+                if (name && age && activity) {
+                    await fetch(`${apiBase}/students`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name, age, activity }) });
+                    loadStudents();
+                }
+            });
+            document.getElementById('add-schedule-btn').addEventListener('click', async () => {
+                const day = prompt('יום (ראשון/שני/...):');
+                const morning = prompt('פעילות בוקר:');
+                const afternoon = prompt('פעילות אחה"צ:');
+                if (day && morning && afternoon) {
+                    await fetch(`${apiBase}/schedule`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ day, morning_activity: morning, afternoon_activity: afternoon }) });
+                    loadSchedule();
+                }
+            });
+            // Initialize
+            window.addEventListener('DOMContentLoaded', () => {
+                loadStudents(); loadSchedule();
+            });
+        </script>
+
+    </body>
+
+</html>

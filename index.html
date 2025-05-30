@@ -5,63 +5,134 @@
         <meta charset="UTF-8">
         <title>גן היצורים</title>
         <style>
+            :root {
+                --primary-color: #FFB300;
+                --secondary-color: #FF7043;
+                --accent-color: #66BB6A;
+                --text-color: #4E342E;
+                --bg-light: #FFF8E1;
+                --button-hover: #FF8A65;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
             body {
                 margin: 0;
-                font-family: Arial, sans-serif;
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+                background: var(--bg-light);
+                color: var(--text-color);
             }
 
             header {
-                background: #f2f2f2;
+                background: var(--primary-color);
                 padding: 20px;
                 text-align: center;
-                font-size: 24px;
+                font-size: 2.5rem;
+                color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
             .container {
                 display: flex;
-                height: calc(100vh - 68px);
+                height: calc(100vh - 80px);
             }
 
             nav {
-                width: 200px;
-                background: #e6e6e6;
+                width: 220px;
+                background: var(--secondary-color);
                 padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
             }
 
             nav a {
-                display: block;
-                margin-bottom: 10px;
-                color: #333;
+                background: white;
+                color: var(--secondary-color);
                 text-decoration: none;
-                font-size: 18px;
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                padding: 10px;
+                border-radius: 12px;
+                text-align: center;
+                transition: background 0.3s;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
             nav a:hover {
-                text-decoration: underline;
+                background: var(--button-hover);
+                color: white;
             }
 
             main {
                 flex: 1;
-                padding: 20px;
+                padding: 25px;
                 overflow-y: auto;
+            }
+
+            section {
+                background: white;
+                border-radius: 16px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            h2 {
+                margin-top: 0;
+                color: var(--accent-color);
+                font-size: 2rem;
+                border-bottom: 2px solid var(--accent-color);
+                padding-bottom: 8px;
             }
 
             table {
                 width: 100%;
                 border-collapse: collapse;
-                margin-top: 10px;
+                margin-top: 15px;
             }
 
             table,
             th,
             td {
-                border: 1px solid #ccc;
+                border: 1px solid #DDD;
             }
 
             th,
             td {
-                padding: 8px;
+                padding: 10px;
                 text-align: center;
+            }
+
+            th {
+                background: var(--primary-color);
+                color: white;
+            }
+
+            ul,
+            ol {
+                margin-left: 20px;
+            }
+
+            li {
+                margin-bottom: 8px;
+            }
+
+            /* Scrollbar styling */
+            main::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            main::-webkit-scrollbar-track {
+                background: #FFECB3;
+                border-radius: 4px;
+            }
+
+            main::-webkit-scrollbar-thumb {
+                background: var(--secondary-color);
+                border-radius: 4px;
             }
         </style>
     </head>
@@ -70,9 +141,9 @@
         <header>גן היצורים</header>
         <div class="container">
             <nav>
-                <a href="#students">תלמידים</a>
-                <a href="#schedule">סדר יום</a>
-                <a href="#recipe">מתכון החלות הסודי</a>
+                <a href="#students">👦 תלמידים</a>
+                <a href="#schedule">📅 סדר יום</a>
+                <a href="#recipe">🍞 מתכון חלות</a>
             </nav>
             <main>
                 <section id="students">
@@ -140,8 +211,8 @@
                     <table>
                         <tr>
                             <th>יום</th>
-                            <th>פעילות - בוקר</th>
-                            <th>פעילות - אחה"צ</th>
+                            <th>בוקר</th>
+                            <th>אחה"צ</th>
                         </tr>
                         <tr>
                             <td>ראשון</td>
@@ -161,7 +232,7 @@
                         <tr>
                             <td>רביעי</td>
                             <td>ניסויים במדע</td>
-                            <td>יצירת יצירות מיחזור</td>
+                            <td>יצירות מיחזור</td>
                         </tr>
                         <tr>
                             <td>חמישי</td>
@@ -175,19 +246,19 @@
                     <h3>מרכיבים (3 חלות):</h3>
                     <ul>
                         <li>1 ק״ג קמח מנופה</li>
-                        <li>רבע כוס (50 גרם) סוכר</li>
-                        <li>רבע כוס (60 מ"ל) שמן</li>
+                        <li>50 גרם סוכר</li>
+                        <li>60 מ"ל שמן</li>
                         <li>1 כף שמרים יבשים</li>
                         <li>1 כף מלח</li>
-                        <li>2 וחצי כוסות (600 מ"ל) מים</li>
+                        <li>600 מ"ל מים</li>
                     </ul>
                     <h3>אופן ההכנה:</h3>
                     <ol>
-                        <li>מערבבים את כל החומרים מלבד המים כדקה במיקסר עם וו לישה.</li>
-                        <li>יוצקים פנימה את המים ולשים כ-6-7 דקות עד לקבלת בצק חלק.</li>
-                        <li>מתפיחים 45 דקות עם כיסוי, עד שהבצק מכפיל את נפחו.</li>
-                        <li>מחלקים ל-3 חלקים, חוצים כל חלק לשניים (סה"כ 6 רצועות), וקולעים צמה מ-4 רצועות.</li>
-                        <li>מתפיחים חצי שעה, מברישים בביצה וסוכר, מפזרים שומשום ואופים ב-220 מעלות 25 דקות.</li>
+                        <li>מערבבים חומרים במיקסר עם וו לישה כדקה.</li>
+                        <li>מוסיפים מים ולשים 6-7 דקות עד חלק.</li>
+                        <li>מתפיחים 45 דקות עד הכפלת נפח.</li>
+                        <li>קולעים צמות מ-6 רצועות (2 רצועות לכל חלק).</li>
+                        <li>מתפיחים חצי שעה, מברישים בביצה, מפזרים שומשום ואופים ב-220℃ כ-25 דקות.</li>
                     </ol>
                 </section>
             </main>

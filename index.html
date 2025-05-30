@@ -3,6 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>גן היצורים</title>
         <style>
             :root {
@@ -133,6 +134,47 @@
             main::-webkit-scrollbar-thumb {
                 background: var(--secondary-color);
                 border-radius: 4px;
+            }
+
+            /* Responsive Styles */
+            @media (max-width: 768px) {
+                header {
+                    font-size: 2rem;
+                    padding: 15px;
+                }
+
+                .container {
+                    flex-direction: column;
+                    height: auto;
+                }
+
+                nav {
+                    width: 100%;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    padding: 10px;
+                }
+
+                nav a {
+                    flex: 1 1 calc(50% - 10px);
+                    margin: 5px;
+                    font-size: 1rem;
+                }
+
+                main {
+                    padding: 15px;
+                    height: auto;
+                }
+
+                table {
+                    display: block;
+                    overflow-x: auto;
+                }
+
+                th,
+                td {
+                    white-space: nowrap;
+                }
             }
         </style>
     </head>
